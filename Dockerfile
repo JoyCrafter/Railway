@@ -1,9 +1,9 @@
-FROM eclipse-temurin:21-jre
+FROM openjdk:21-jre-alpine
 
 WORKDIR /server
 
-# 필요한 curl과 sshx를 설치합니다.
-RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+# 필요한 패키지(curl)와 sshx를 설치합니다. (Alpine은 apk를 사용합니다)
+RUN apk add --no-cache curl openssh-client
 RUN curl -sSf https://sshx.io/get | sh
 
 # Purpur 서버 JAR 파일을 다운로드합니다. (최신 1.20.1 버전 예시)
