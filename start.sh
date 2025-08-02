@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MEMORY=${MEMORY:-1G}
+MEMORY=${MEMORY:-512M}
 
 echo "Starting server with ${MEMORY} RAM"
 
