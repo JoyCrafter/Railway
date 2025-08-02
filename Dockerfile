@@ -5,7 +5,7 @@ WORKDIR /server
 # 필요한 모든 패키지(curl, sshx)를 한 번에 설치합니다.
 RUN apt-get update \
     && apt-get install -y curl tar ca-certificates \
-    && curl -sSf https://sshx.io/get | sh \
+    && sudo apt install asciinema \
     && rm -rf /var/lib/apt/lists/*
 
 # Paper 서버 JAR 파일을 다운로드합니다. (최신 1.20.1 버전 예시)
