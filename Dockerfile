@@ -13,7 +13,7 @@ RUN useradd -ms /bin/bash minecraft && echo "minecraft:password" | chpasswd
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 # Paper 서버 JAR 파일을 다운로드합니다. (최신 1.20.1 버전 예시)
-RUN curl -o paper.jar https://api.papermc.io/v2/projects/paper/versions/1.20.1/builds/latest/downloads/paper-1.20.1-477.jar
+RUN curl -o paper.jar https://fill-data.papermc.io/v1/objects/4bee8c5b1418418bbac3fa82be2bb130d8b224ac9f013db8d48823225cf6ed0a/paper-1.21.8-21.jar
 
 # 서버 시작 스크립트를 컨테이너에 복사합니다.
 COPY start.sh .
