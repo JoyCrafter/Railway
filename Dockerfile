@@ -1,26 +1,20 @@
-FROM ubuntu:22.04
+FROM eclipse-temurin:21-jre
 
 WORKDIR /server
 
-# 필요한 패키지(curl, tar, nano 등)와 openjdk-21-jdk, sshx를 설치합니다.
-RUN apt-get update && apt-get install -y curl tar nano ca-certificates openjdk-21-jdk && rm -rf /var/lib/apt/lists/*
+# 필요한 curl과 sshx를 설치합니다.
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 RUN curl -sSf https://sshx.io/get | sh
 
-# PufferPanel을 다운로드합니다.
-RUN curl -L -o pufferpanel.tar.gz https://github.com/PufferPanel/PufferPanel/releases/latest/download/pufferpanel-v2-linux-amd64.tar.gz
-RUN tar -xvzf pufferpanel.tar.gz
-RUN rm pufferpanel.tar.gz
-RUN chmod +x pufferpanel
-
-# PufferPanel 설정을 위한 디렉토리를 수동으로 만듭니다.
-RUN mkdir -p /var/lib/pufferpanel/data /etc/pufferpanel
-
-# PufferPanel 포트를 노출합니다.
-EXPOSE 19132 8080
+# Purpur 서버 JAR 파일을 다운로드합니다. (최신 1.20.1 버전 예시)
+RUN curl -o purpur.jar https://api.purpurmc.org/v2/purpur/1.20.1/latest/download
 
 # 서버 시작 스크립트를 컨테이너에 복사합니다.
 COPY start.sh .
 RUN chmod +x start.sh
+
+# 마인크래프트 기본 포트를 노출합니다.
+EXPOSE 25565
 
 # 컨테이너가 시작될 때 start.sh 스크립트를 실행합니다.
 CMD ["./start.sh"]
