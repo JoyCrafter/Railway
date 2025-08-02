@@ -1,9 +1,9 @@
-FROM openjdk-21-jdk
+FROM ubuntu:22.04
 
 WORKDIR /server
 
-# 필요한 패키지 및 sshx를 설치합니다.
-RUN apt-get update && apt-get install -y curl tar nano ca-certificates && rm -rf /var/lib/apt/lists/*
+# 필요한 패키지(curl, tar, nano 등)와 openjdk-21-jdk, sshx를 설치합니다.
+RUN apt-get update && apt-get install -y curl tar nano ca-certificates openjdk-21-jdk && rm -rf /var/lib/apt/lists/*
 RUN curl -sSf https://sshx.io/get | sh
 
 # PufferPanel을 다운로드합니다.
@@ -16,7 +16,7 @@ RUN chmod +x pufferpanel
 RUN mkdir -p /var/lib/pufferpanel/data /etc/pufferpanel
 
 # PufferPanel 포트를 노출합니다.
-EXPOSE 19132 8080
+EXPOSE 25565 8080
 
 # 서버 시작 스크립트를 컨테이너에 복사합니다.
 COPY start.sh .
