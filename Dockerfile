@@ -1,18 +1,13 @@
-FROM ubuntu:22.04
+FROM eclipse-temurin:17-jre-focal
 
-# Install dependencies
-RUN apt update && \
-    apt install -y software-properties-common wget curl git openssh-client tmate python3 && \
-    apt clean
+WORKDIR /server
 
-# Create a dummy index page to keep the service alive
-RUN mkdir -p /app && echo "Tmate Session Running..." > /app/index.html
-WORKDIR /app
+# 필요한 패키지(curl)와 sshx를 설치합니다.
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+RUN curl -sSf https://sshx.io/get | sh
 
-# Expose a fake web port to trick Railway into keeping container alive
-EXPOSE 6080
+# 마인크래프트 서버용 포트를 노출합니다.
+EXPOSE 25565
 
-# Start a dummy Python web server to keep Railway service active
-# and start tmate session
-CMD python3 -m http.server 6080 & \
-    tmate -F
+# 컨테이너가 시작되면 sshx를 실행합니다.
+CMD ["sshx"]
