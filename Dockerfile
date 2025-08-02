@@ -16,7 +16,7 @@ RUN chmod +x pufferpanel
 RUN mkdir -p /var/lib/pufferpanel/data /etc/pufferpanel
 
 # PufferPanel 포트를 노출합니다.
-EXPOSE 25565 8080
+EXPOSE 19132 8080
 
 # 서버 시작 스크립트를 컨테이너에 복사합니다.
 COPY start.sh .
