@@ -6,6 +6,10 @@ WORKDIR /server
 RUN apt-get update \
     && apt-get install -y curl openssh-server \
     && rm -rf /var/lib/apt/lists/*
+    && curl -s https://packagecloud.io/install/repositories/pufferpanel/pufferpanel/script.deb.sh | sudo bash
+    && sudo apt-get install pufferpanel
+    && sudo systemctl enable --now pufferpanel
+    && sudo pufferpanel user add
 
 # SSH 서버를 설정합니다.
 RUN mkdir /var/run/sshd
