@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 시작할 tmux 세션 이름  
-SESSION="my_session"
+SESSION="Server"
 
 # tmux 세션이 이미 존재하는지 체크  
 if ! tmux has-session -t $SESSION 2>/dev/null; then  
