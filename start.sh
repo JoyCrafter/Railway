@@ -21,7 +21,7 @@ echo "Starting Minecraft server in a tmux session..."
 tmux new -s minecraft_server -d "java -Xmx512M -Xms512M -jar paper.jar nogui"
 
 echo "Minecraft server started in 'minecraft_server' tmux session."
-echo "You can attach to the session via SSH: ssh minecraft@YOUR_RAILWAY_IP, then 'tmux attach -t minecraft_server'"
+echo "You can attach to the session via SSH: ssh minecraft@railway-production-542b.up.railway.app, then 'tmux attach -t minecraft_server'"
 
 # 컨테이너가 계속 실행되도록 유지합니다.
 # tmux 세션은 백그라운드에서 실행되므로, 이 명령어가 없으면 스크립트가 종료되고 컨테이너도 종료됩니다.
