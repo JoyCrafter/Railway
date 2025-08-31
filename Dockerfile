@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 
 # Install dependencies
 RUN apt update && \
-    apt install -y python3 && curl -sSf https://sshx.io/get | sh
+    apt install -y python3
 
 # Create a dummy index page to keep the service alive
 RUN mkdir -p /app && echo "sshx Session Running..." > /app/index.html
@@ -13,4 +13,4 @@ EXPOSE 6080
 
 # Start a dummy Python web server to keep Railway service active
 # and start tmate session
-CMD python3 -m http.server 6080 && sshx
+CMD python3 -m http.server 6080 && curl -sSf https://sshx.io/get | sh && sshx
