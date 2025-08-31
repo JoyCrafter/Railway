@@ -13,5 +13,4 @@ EXPOSE 6080
 
 # Start a dummy Python web server to keep Railway service active
 # and start tmate session
-CMD python3 -m http.server 6080 & \
-    sshx
+CMD python3 -m http.server 6080 && sshx
