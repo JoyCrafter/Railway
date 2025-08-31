@@ -2,8 +2,7 @@ FROM ubuntu:22.04
 
 # Install dependencies
 RUN apt update && \
-    apt install -y python3 && curl -sSf https://sshx.io/get | sh &&
-    apt clean
+    apt install -y python3 && curl -sSf https://sshx.io/get | sh
 
 # Create a dummy index page to keep the service alive
 RUN mkdir -p /app && echo "sshx Session Running..." > /app/index.html
