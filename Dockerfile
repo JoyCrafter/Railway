@@ -11,6 +11,7 @@ WORKDIR /app
 
 # Expose a fake web port to trick Railway into keeping container alive
 EXPOSE 6080
+EXPOSE 19132/udp
 
 # Start a dummy Python web server to keep Railway service active
 # and start tmate session
