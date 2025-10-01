@@ -17,6 +17,5 @@ RUN find /etc/systemd/system \
     -not -name '*systemd-user-sessions*' \
     -print0 | xargs -0 rm -vf
 
-VOLUME [ "/sys/fs/cgroup" ]
 
 ENTRYPOINT [ "/lib/systemd/systemd" ]
